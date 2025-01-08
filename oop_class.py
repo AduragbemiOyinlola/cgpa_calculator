@@ -27,7 +27,7 @@ class CGPA:
             else:
                 break
 
-    def calculate_cgpa(self):
+    def calculate_gpa(self):
         for i in range(len(self.grades)):
             self.w_s += self.grade_points[self.grades[i]] * self.units[i]
 
