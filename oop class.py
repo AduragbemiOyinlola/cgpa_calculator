@@ -8,4 +8,7 @@ class CGPA:
     def get_year(self, year):
         self.year = int(input(year))
 
+    def get_semester(self, semester):
+        self.semester = int(input(semester))
+
     
