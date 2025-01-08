@@ -34,3 +34,8 @@ class CGPA:
         self.CGPA = self.w_s/sum(self.units)
         print('\nCGPA is:',self.CGPA)
 
+cgpa = CGPA()
+cgpa.get_year('Enter year: ')
+cgpa.get_semester('Enter semester: ')
+cgpa.get_grades(cgpa.grades, cgpa.units)
+cgpa.calculate_cgpa()
