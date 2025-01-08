@@ -11,4 +11,26 @@ class CGPA:
     def get_semester(self, semester):
         self.semester = int(input(semester))
 
-    
+    def get_grades(self, grades, units):
+
+        units.append(int(input('enter course unit: ')))
+        grades.append(input('enter grade: ').upper())
+
+        while True:
+            response = input('\nAdd more? (y/n): ')
+            if response == 'y':
+                try: 
+                    units.append(int(input('enter course unit: ')))
+                    grades.append(input('enter grade: ').upper())
+                except ValueError:
+                    print('You have entered a wrong format, kindly exit and start again.')
+            else:
+                break
+
+    def calculate_cgpa(self):
+        for i in range(len(self.grades)):
+            self.w_s += self.grade_points[self.grades[i]] * self.units[i]
+
+        self.CGPA = self.w_s/sum(self.units)
+        print('\nCGPA is:',self.CGPA)
+
