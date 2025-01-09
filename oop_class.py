@@ -4,6 +4,7 @@ class CGPA:
         self.units = []
         self.w_s = 0
         self.grade_points = {'A':5, 'B':4, 'C':3, 'D':2, 'E':1, 'F':0}
+        self.gpa = []
 
     def get_year(self, year):
         self.year = int(input(year))
@@ -27,12 +28,16 @@ class CGPA:
             else:
                 break
 
-    def calculate_gpa(self):
+    def calculate_semester_gpa(self):
         for i in range(len(self.grades)):
             self.w_s += self.grade_points[self.grades[i]] * self.units[i]
 
-        self.CGPA = self.w_s/sum(self.units)
-        print('\nCGPA is:',self.CGPA)
+        self.gpa.append(self.w_s/sum(self.units))
+        
+    def calculate_cgpa(self):
+        self.calculate_semester_gpa()
+        cgpa = sum(self.gpa)/len(self.gpa)
+        print('\nCGPA is:',cgpa)
 
 cgpa = CGPA()
 cgpa.get_year('Enter year: ')
