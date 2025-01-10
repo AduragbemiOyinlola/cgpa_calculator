@@ -3,9 +3,12 @@ import streamlit as st
 st.title("CGPA Calculator")
 st.write("This app calculates your CGPA based on the grades and units you input.")
 
-# Number of years
-year = st.number_input("What year?", min_value=1, max_value=7, step=1)
-semester = st.number_input("What semester?", min_value=1, max_value=2)
+col1, col2 = st.columns(2)
+
+with col1:
+    year = st.number_input("What year?", min_value=1, max_value=7, step=1)
+with col2:
+    semester = st.number_input("What semester?", min_value=1, max_value=2)
 
 # Grade Options
 grade_options = ["A", "B", "C", "D", "E", "F"]
