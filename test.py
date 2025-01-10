@@ -38,7 +38,7 @@ def get_grades_units(year_label):
         "F": 0
     }
 
-     # GPA Calculation Function
+    # GPA Calculation Function
     def calculate_gpa(semester_grades, semester_units):
         total_points = 0
         total_units = 0
@@ -117,50 +117,54 @@ def get_grades_units(year_label):
 # Combination of Year and Semester
 if semester == 2:
     for i in range(1, year+1):
-        st.header(f"Year {i}")
-        get_grades_units(f"Year {i}")
+        with st.expander("", expanded=True): 
+            st.header(f"Year {i}")
+            get_grades_units(f"Year {i}")
 
 elif semester == 1 and year > 1:
     for i in range(1, year):
-        st.header(f"Year {i}")
-        get_grades_units(f"Year {i}")
+        with st.expander("", expanded=True): 
+            st.header(f"Year {i}")
+            get_grades_units(f"Year {i}")
 
-    st.header(f"Year {year}")
-    col1, col2 = st.columns(2)
+    with st.expander("", expanded=True): 
+        st.header(f"Year {year}")
+        col1, col2 = st.columns(2)
 
-    with col1:
-        st.subheader("First Semester")
-        num_courses_sem1 = st.number_input(
-            "Number of Courses (First Semester):", min_value=1, step=1, key="num_courses_sem1"
-        )
-        for i in range(int(num_courses_sem1)):
-            grade = st.selectbox(
-                f"Grade for Course {i + 1} (First Semester):", grade_options, key=f"sem1_grade_{i}"
+        with col1:
+            st.subheader("First Semester")
+            num_courses_sem1 = st.number_input(
+                "Number of Courses (First Semester):", min_value=1, step=1, key="num_courses_sem1"
             )
-            grades_sem1.append(grade)
-            unit = st.number_input(
-                f"Unit for Course {i + 1} (First Semester):", min_value=1, key=f"sem1_unit_{i}"
-            )
-            units_sem1.append(unit)
+            for i in range(int(num_courses_sem1)):
+                grade = st.selectbox(
+                    f"Grade for Course {i + 1} (First Semester):", grade_options, key=f"sem1_grade_{i}"
+                )
+                grades_sem1.append(grade)
+                unit = st.number_input(
+                    f"Unit for Course {i + 1} (First Semester):", min_value=1, key=f"sem1_unit_{i}"
+                )
+                units_sem1.append(unit)
 
 else:
-    st.header(f"Year {year}")
-    col1, col2 = st.columns(2)
+    with st.expander("", expanded=True): 
+        st.header(f"Year {year}")
+        col1, col2 = st.columns(2)
 
-    with col1:
-        st.subheader("First Semester")
-        num_courses_sem1 = st.number_input(
-            "Number of Courses (First Semester):", min_value=1, step=1, key="num_courses_sem1"
-        )
-        for i in range(int(num_courses_sem1)):
-            grade = st.selectbox(
-                f"Grade for Course {i + 1} (First Semester):", grade_options, key=f"sem1_grade_{i}"
+        with col1:
+            st.subheader("First Semester")
+            num_courses_sem1 = st.number_input(
+                "Number of Courses (First Semester):", min_value=1, step=1, key="num_courses_sem1"
             )
-            grades_sem1.append(grade)
-            unit = st.number_input(
-                f"Unit for Course {i + 1} (First Semester):", min_value=1, key=f"sem1_unit_{i}"
-            )
-            units_sem1.append(unit)
+            for i in range(int(num_courses_sem1)):
+                grade = st.selectbox(
+                    f"Grade for Course {i + 1} (First Semester):", grade_options, key=f"sem1_grade_{i}"
+                )
+                grades_sem1.append(grade)
+                unit = st.number_input(
+                    f"Unit for Course {i + 1} (First Semester):", min_value=1, key=f"sem1_unit_{i}"
+                )
+                units_sem1.append(unit)
 
 # Calculate CGPA
 if st.button("Calculate CGPA"):
