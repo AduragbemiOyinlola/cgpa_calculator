@@ -9,9 +9,7 @@ st.sidebar.title("How would you like to calculate your CGPA?")
 options = ["From scratch", "From previous GPA"]
 calculation_option = st.sidebar.radio("Select CGPA Calculation Option", options)
 
-"""
-Option 1: From Scratch
-"""
+# Option 1: From Scratch
 if calculation_option == "From scratch":
     # User Input Section
     col1, col2 = st.columns(2)
@@ -178,4 +176,54 @@ if calculation_option == "From scratch":
     # Calculate CGPA
     if st.button("Calculate CGPA"):
         cgpa = sum(gpa_per_semester) / len(gpa_per_semester)
+        st.success(f"Your CGPA is: {cgpa:.2f}")
+
+# Option 2: From Previous GPA
+else:
+    previous_cgpa = st.number_input("What is your previous CGPA?", min_value=0.0, max_value=5.0)
+
+    # User Input Section
+    st.header("Enter Your Grades and Units")
+
+    # Input Number of Courses
+    num_courses = st.number_input("Enter the number of courses:", min_value=1, step=1)
+
+    # Grade Options
+    grade_options = ["A", "B", "C", "D", "E", "F"]
+
+    # Input Grades and Units
+    grades = []
+    units = []
+
+    st.write("Provide your grades and corresponding units:")
+    for i in range(num_courses):
+        col1, col2 = st.columns(2)
+        with col1:
+            grade = st.selectbox(f"Grade for Course {i+1}:", grade_options, key=f"grade_{i}")
+            grades.append(grade)
+        with col2:
+            unit = st.number_input(f"Unit for Course {i+1}:", min_value=1, key=f"unit_{i}")
+            units.append(unit)
+
+    # Grade to Point Mapping
+    grade_points = {
+        "A": 5,
+        "B": 4,
+        "C": 3,
+        "D": 2,
+        "E": 1,
+        "F": 0
+    }
+
+    # CGPA Calculation
+    if st.button("Calculate CGPA"):
+        total_points = 0
+        total_units = 0
+        for grade, unit in zip(grades, units):
+            points = grade_points[grade] * unit
+            total_points += points
+            total_units += unit
+
+        gpa = total_points / total_units
+        cgpa = (previous_cgpa + gpa) / 2
         st.success(f"Your CGPA is: {cgpa:.2f}")
