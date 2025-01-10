@@ -4,6 +4,11 @@ import streamlit as st
 st.title("CGPA Calculator")
 st.write("This app calculates your CGPA based on the grades and units you input.")
 
+# CGPA Calculation options
+st.sidebar.title("How would you like to calculate your CGPA?")
+options = ["From scratch", "From previous GPA"]
+calculation_option = st.sidebar.radio("Select CGPA Calculation Option", options)
+
 # User Input Section
 col1, col2 = st.columns(2)
 with col1:
