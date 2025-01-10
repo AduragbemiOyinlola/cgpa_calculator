@@ -124,17 +124,17 @@ if calculation_option == "From scratch":
     # Combination of Year and Semester
     if semester == 2:
         for i in range(1, year+1):
-            with st.expander("", expanded=True): 
+            with st.expander("Field to input data", expanded=True): 
                 st.header(f"Year {i}")
                 get_grades_units(f"Year {i}")
 
     elif semester == 1 and year > 1:
         for i in range(1, year):
-            with st.expander("", expanded=True): 
+            with st.expander("Field to input data", expanded=True): 
                 st.header(f"Year {i}")
                 get_grades_units(f"Year {i}")
 
-        with st.expander("", expanded=True): 
+        with st.expander("Field to input data", expanded=True): 
             st.header(f"Year {year}")
             col1, col2 = st.columns(2)
 
@@ -154,7 +154,7 @@ if calculation_option == "From scratch":
                     units_sem1.append(unit)
 
     else:
-        with st.expander("", expanded=True): 
+        with st.expander("Field to input data", expanded=True): 
             st.header(f"Year {year}")
             col1, col2 = st.columns(2)
 
