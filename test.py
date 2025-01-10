@@ -49,3 +49,6 @@ def get_grades_units():
                 f"Unit for Course {i + 1} (Second Semester):", min_value=1, key=f"sem2_unit_{i}"
             )
             units_sem2.append(unit)
+
+    return grades_sem1, units_sem1, grades_sem2, units_sem2
+
