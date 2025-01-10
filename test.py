@@ -48,51 +48,71 @@ def get_grades_units(year_label):
             total_units += unit
         return total_points / total_units if total_units > 0 else 0
 
+    # Column for first semesters
     with col1:
         st.subheader("First Semester")
         num_courses_sem1 = st.number_input(
-            f"Number of Courses (First Semester - {year_label}):", min_value=1, step=1, key=f"num_courses_sem1_{year_label}"
+            f"Number of Courses:", min_value=1, step=1, key=f"num_courses_sem1_{year_label}"
         )
 
-        for i in range(int(num_courses_sem1)):
-            grade = st.selectbox(
-                f"Grade for Course {i + 1} (First Semester - {year_label}):",
-                grade_options,
-                key=f"sem1_grade_{year_label}_{i}",
-            )
-            unit = st.number_input(
-                f"Unit for Course {i + 1} (First Semester - {year_label}):",
-                min_value=1,
-                key=f"sem1_unit_{year_label}_{i}",
-            )
-            grades_sem1.append(grade)
-            units_sem1.append(unit)
+        # Create columns for first semester grades and units
+        col3, col4 = st.columns(2)
 
-            gpa_sem1 = calculate_gpa(grades_sem1, units_sem1)
-            gpa_per_semester.append(gpa_sem1)
+        # Column for first semester grade
+        with col3:
+            for i in range(int(num_courses_sem1)):
+                grade = st.selectbox(
+                    f"Grade for Course {i + 1}:",
+                    grade_options,
+                    key=f"sem1_grade_{year_label}_{i}",
+                )
 
+        # Column for first semester unit
+        with col4:
+            for i in range(int(num_courses_sem1)):
+                unit = st.number_input(
+                    f"Unit for Course {i + 1}:",
+                    min_value=1,
+                    key=f"sem1_unit_{year_label}_{i}",
+                )
+        grades_sem1.append(grade)
+        units_sem1.append(unit)
+
+        gpa_sem1 = calculate_gpa(grades_sem1, units_sem1)
+        gpa_per_semester.append(gpa_sem1)
+
+    # Column for second semesters
     with col2:
         st.subheader("Second Semester")
         num_courses_sem2 = st.number_input(
-            f"Number of Courses (Second Semester - {year_label}):", min_value=1, step=1, key=f"num_courses_sem2_{year_label}"
+            f"Number of Courses:", min_value=1, step=1, key=f"num_courses_sem2_{year_label}"
         )
 
-        for i in range(int(num_courses_sem2)):
-            grade = st.selectbox(
-                f"Grade for Course {i + 1} (Second Semester - {year_label}):",
-                grade_options,
-                key=f"sem2_grade_{year_label}_{i}",
-            )
-            unit = st.number_input(
-                f"Unit for Course {i + 1} (Second Semester - {year_label}):",
-                min_value=1,
-                key=f"sem2_unit_{year_label}_{i}",
-            )
-            grades_sem2.append(grade)
-            units_sem2.append(unit)
+        # Create columns for second semester grades and units
+        col5, col6 = st.columns(2)
 
-            gpa_sem2 = calculate_gpa(grades_sem2, units_sem2)
-            gpa_per_semester.append(gpa_sem2)
+        # Column for second semester grade
+        with col5:
+            for i in range(int(num_courses_sem2)):
+                grade = st.selectbox(
+                    f"Grade for Course {i + 1}:",
+                    grade_options,
+                    key=f"sem2_grade_{year_label}_{i}",
+                )
+
+        # Column for second semester unit
+        with col6:
+            for i in range(int(num_courses_sem2)):
+                unit = st.number_input(
+                    f"Unit for Course {i + 1}:",
+                    min_value=1,
+                    key=f"sem2_unit_{year_label}_{i}",
+                )
+        grades_sem2.append(grade)
+        units_sem2.append(unit)
+
+        gpa_sem2 = calculate_gpa(grades_sem2, units_sem2)
+        gpa_per_semester.append(gpa_sem2)
         
 # Combination of Year and Semester
 if semester == 2:
@@ -142,6 +162,7 @@ else:
             )
             units_sem1.append(unit)
 
+# Calculate CGPA
 if st.button("Calculate CGPA"):
     cgpa = sum(gpa_per_semester) / len(gpa_per_semester)
     st.success(f"Your CGPA is: {cgpa:.2f}")
