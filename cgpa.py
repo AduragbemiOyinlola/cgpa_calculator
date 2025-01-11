@@ -85,8 +85,8 @@ if calculation_option == "From scratch":
                     )
                     units_sem1.append(unit)
 
-            gpa_sem1 = calculate_gpa(grades_sem1, units_sem1)
-            gpa_per_semester.append(gpa_sem1)
+                gpa_sem1 = calculate_gpa(grades_sem1, units_sem1)
+                gpa_per_semester.append(gpa_sem1)
 
         # Column for second semesters
         with col2:
@@ -118,8 +118,8 @@ if calculation_option == "From scratch":
                     )
                     units_sem2.append(unit)
 
-            gpa_sem2 = calculate_gpa(grades_sem2, units_sem2)
-            gpa_per_semester.append(gpa_sem2)
+                gpa_sem2 = calculate_gpa(grades_sem2, units_sem2)
+                gpa_per_semester.append(gpa_sem2)
             
     # Combination of Year and Semester
     if semester == 2:
