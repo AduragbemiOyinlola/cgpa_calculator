@@ -73,7 +73,7 @@ if calculation_option == "From scratch":
                         grade_options,
                         key=f"sem1_grade_{year_label}_{i}",
                     )
-                grades_sem1.append(grade)
+                    grades_sem1.append(grade)
 
             # Column for first semester unit
             with col4:
@@ -83,7 +83,7 @@ if calculation_option == "From scratch":
                         min_value=1,
                         key=f"sem1_unit_{year_label}_{i}",
                     )
-                units_sem1.append(unit)
+                    units_sem1.append(unit)
 
             gpa_sem1 = calculate_gpa(grades_sem1, units_sem1)
             gpa_per_semester.append(gpa_sem1)
@@ -106,7 +106,7 @@ if calculation_option == "From scratch":
                         grade_options,
                         key=f"sem2_grade_{year_label}_{i}",
                     )
-                grades_sem2.append(grade)
+                    grades_sem2.append(grade)
 
             # Column for second semester unit
             with col6:
@@ -116,7 +116,7 @@ if calculation_option == "From scratch":
                         min_value=1,
                         key=f"sem2_unit_{year_label}_{i}",
                     )
-                units_sem2.append(unit)
+                    units_sem2.append(unit)
 
             gpa_sem2 = calculate_gpa(grades_sem2, units_sem2)
             gpa_per_semester.append(gpa_sem2)
