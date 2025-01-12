@@ -1,10 +1,15 @@
 # CGPA Calculator
 
-This project is a simple CGPA (Cumulative Grade Point Average) calculator implemented in Python and deployed using Streamlit. It allows users to input their course units and grades, and then calculates the CGPA based on the provided data.
+## Overview
+The CGPA Calculator is an interactive web application designed to simplify the calculation of Cumulative Grade Point Average (CGPA) for students. Built with Streamlit, this tool allows users to:
 
+- Calculate CGPA from scratch: Input your course units and corresponding grades to compute your overall CGPA.
+- Update CGPA based on previous scores: Enter your existing CGPA and additional course details to determine your updated CGPA.
 
-## Example
+## Features
+- User-Friendly Interface: Intuitive design for seamless navigation and input.
+- Real-Time Calculation: Instant CGPA computation as you input your data.
+- Flexibility: Suitable for various grading systems; customizable to fit different academic institutions' requirements.
 
-1. Enter the course unit and grade for each course.
-2. Click the "Add more" button to input additional courses.
-3. The CGPA will be calculated and displayed.
+## Access the Application
+Experience the CGPA Calculator live: https://calculate-cgpa.streamlit.app/
